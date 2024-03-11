@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <LangVersion>preview</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Remove="Enums\**"/>
+        <EmbeddedResource Remove="Enums\**"/>
+        <None Remove="Enums\**"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Aftership" Version="6.0.4"/>
+        <PackageReference Include="Dapper" Version="2.0.123"/>
+        <PackageReference Include="EAGetMail" Version="5.3.0.2"/>
+        <PackageReference Include="EntityFramework" Version="6.4.4"/>
+        <PackageReference Include="EPPlus" Version="5.8.5"/>
+        <PackageReference Include="HtmlAgilityPack" Version="1.11.46"/>
+        <PackageReference Include="MailKit" Version="3.1.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.1"/>
+        <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.1">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.1"/>
+        <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="6.0.1"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="5.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="6.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0"/>
+        <PackageReference Include="MimeKit" Version="3.1.0"/>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.2"/>
+        <PackageReference Include="Sentry.AspNetCore" Version="3.3.0"/>
+        <PackageReference Include="ShopifySharp" Version="5.19.1"/>
+        <PackageReference Include="StackExchange.Redis" Version="2.2.88"/>
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.15.0"/>
+        <PackageReference Include="WooCommerceNET" Version="0.8.5"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Template\"/>
+    </ItemGroup>
+
+</Project>
