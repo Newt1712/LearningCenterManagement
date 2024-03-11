@@ -21,21 +21,7 @@ var config = new ConfigurationBuilder()
     .SetBasePath(Directory.GetCurrentDirectory())
     .AddJsonFile("appsettings.json", false)
     .Build();
-//Add JWT
-//builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(jwtOptions =>
-//{
-//    jwtOptions.RequireHttpsMetadata = false;
-//    jwtOptions.TokenValidationParameters = new TokenValidationParameters
-//    {
-//        ValidateIssuer = true,
-//        ValidateAudience = true,
-//        ValidateIssuerSigningKey = true,
-//        ValidAudience = builder.Configuration["JWT:Audience"],
-//        ValidIssuer = builder.Configuration["JWT:Issuer"],
-//        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"]))
-//    };
-//});
-//Add CORS
+
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
@@ -61,10 +47,10 @@ builder.Services.AddSwaggerGen(c =>
     {
         Version = "v1.1",
         Title = "API",
-        Description = "Kaizen",
+        Description = "LearningCenter",
         Contact = new OpenApiContact
         {
-            Name = "Kaizen"
+            Name = "LearningCenter"
         }
     });
     c.OperationFilter<AddRequiredHeaderParameter>();
@@ -83,8 +69,20 @@ builder.Services.AddSingleton<IRedisDistributedService, RedisDistributedManager>
 builder.Services.AddSingleton<IRedisStackExchangeAPI, RedisStackExchangeAPI>();
 builder.Services.Configure<RedisSettings>(builder.Configuration.GetSection(nameof(RedisSettings)));
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(AppSettings.MSSQLSettings.SQLConn));
+
 builder.Services.AddScoped<BaseEntityService<Parent>>();
 builder.Services.AddScoped<ParentService>();
+builder.Services.AddScoped<BaseEntityService<Course>>();
+builder.Services.AddScoped<CourseService>();
+builder.Services.AddScoped<BaseEntityService<Classroom>>();
+builder.Services.AddScoped<ClassroomService>();
+builder.Services.AddScoped<BaseEntityService<Student>>();
+builder.Services.AddScoped<StudentService>();
+builder.Services.AddScoped<BaseEntityService<Teacher>>();
+builder.Services.AddScoped<TeacherService>();
+builder.Services.AddScoped<BaseEntityService<Grade>>();
+builder.Services.AddScoped<GradeService>();
+
 AppSettings.Init(builder.Services, builder.Configuration);
 
 //TODO: Service

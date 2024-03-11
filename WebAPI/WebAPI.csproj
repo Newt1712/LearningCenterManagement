@@ -10,21 +10,21 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Dropbox.Api" Version="6.26.0"/>
-        <PackageReference Include="EPPlus" Version="6.1.1"/>
-        <PackageReference Include="Hangfire.AspNetCore" Version="1.7.32"/>
-        <PackageReference Include="Hangfire.Core" Version="1.7.32"/>
-        <PackageReference Include="Hangfire.SqlServer" Version="1.7.32"/>
-        <PackageReference Include="HtmlAgilityPack" Version="1.11.46"/>
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.5"/>
-        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.2"/>
-        <PackageReference Include="Sentry.AspNetCore" Version="3.12.3"/>
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.5"/>
-        <PackageReference Include="WooCommerceNET" Version="0.8.5"/>
+        <PackageReference Include="Dropbox.Api" Version="6.26.0" />
+        <PackageReference Include="EPPlus" Version="6.1.1" />
+        <PackageReference Include="Hangfire.AspNetCore" Version="1.7.32" />
+        <PackageReference Include="Hangfire.Core" Version="1.7.32" />
+        <PackageReference Include="Hangfire.SqlServer" Version="1.7.32" />
+        <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.5" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.2" />
+        <PackageReference Include="Sentry.AspNetCore" Version="3.12.3" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.5" />
+        <PackageReference Include="WooCommerceNET" Version="0.8.5" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Data\Data.csproj"/>
+        <ProjectReference Include="..\Data\Data.csproj" />
     </ItemGroup>
 
     <ItemGroup>
