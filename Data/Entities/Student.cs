@@ -7,6 +7,7 @@ public class Student : BaseEntity
 {
     public string email { get; set; }
     public string password { get; set; }
+    public byte[] salt { get; set; }
     public string fname { get; set; }
     public string iname { get; set; }
     public DateTime dob { get; set; }

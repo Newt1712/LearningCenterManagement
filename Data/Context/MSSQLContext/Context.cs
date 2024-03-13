@@ -22,7 +22,7 @@ public class ApplicationDbContext : DbContext
     public virtual DbSet<Attendance> Attendances { get; set; }
     public virtual DbSet<ClassRoom_Student> ClassRoomStudents { get; set; }
     public virtual DbSet<Grade> Grades { get; set; }
-
+    public virtual DbSet<User> Users { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder
@@ -50,5 +50,7 @@ public class ApplicationDbContext : DbContext
             entity.ToTable("classroom_student");
         });
         modelBuilder.Entity<Grade>(entity => { entity.ToTable("grade"); });
+
+        modelBuilder.Entity<User>(entity => { entity.ToTable("Users");  });
     }
 }

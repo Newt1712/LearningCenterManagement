@@ -4,6 +4,7 @@ using Data.Models.Common;
 using Data.Models.RequestModel;
 using Data.Models.ResponseModel;
 using Data.Utils;
+using Microsoft.EntityFrameworkCore;
 using Sentry;
 
 namespace Data.Service;
@@ -11,10 +12,11 @@ namespace Data.Service;
 public class BaseEntityService<TEntity> where TEntity : BaseEntity
 {
     public readonly ApplicationDbContext _context;
-
+    private readonly DbSet<TEntity> _entities;
     public BaseEntityService(ApplicationDbContext context)
     {
         _context = context;
+        _entities = _context.Set<TEntity>();
     }
 
     public async Task<ListDataOutput<TEntity>> GetList(Pager pager)
@@ -117,6 +119,12 @@ public class BaseEntityService<TEntity> where TEntity : BaseEntity
         var response = new Response();
         try
         {
+            if (!(await _entities.AnyAsync(x => x.Id == entity.Id)))
+            {
+                response.StatusCode = ResponseStatusCode.Error;
+                response.ErrorMessage = EnumMessage.NOT_EXISTED.GetDescription();
+                return response;
+            }
             _context.Update(entity);
             var affected = await _context.SaveChangesAsync();
             response.StatusCode = affected > 0 ? ResponseStatusCode.Success : ResponseStatusCode.Error;
@@ -136,12 +144,21 @@ public class BaseEntityService<TEntity> where TEntity : BaseEntity
         var response = new Response();
         try
         {
+
             var entity = await GetById(id);
+            if (entity == null)
+            {
+                response.StatusCode = ResponseStatusCode.Error;
+                response.ErrorMessage = EnumMessage.NOT_EXISTED.GetDescription();
+                return response;
+
+            }
             //_context.Remove<TEntity>(entity);
             _context.Remove(entity);
             var affected = await _context.SaveChangesAsync();
             response.StatusCode = affected > 0 ? ResponseStatusCode.Success : ResponseStatusCode.Error;
         }
+
         catch (Exception ex)
         {
             response.StatusCode = ResponseStatusCode.Error;
@@ -151,7 +168,6 @@ public class BaseEntityService<TEntity> where TEntity : BaseEntity
 
         return response;
     }
-
 
     public async Task<Response> DeleteMultiById(List<int> ids)
     {
@@ -190,4 +206,5 @@ public class BaseEntityService<TEntity> where TEntity : BaseEntity
 
         return response;
     }
+
 }

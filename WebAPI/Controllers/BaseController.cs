@@ -6,7 +6,6 @@ using Data.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.AttributeFilter;
-
 namespace WebAPI.Controllers;
 
 [ApiController]
@@ -63,6 +62,24 @@ public class BaseController<T> : ControllerBase where T : BaseEntity
     [BasicAuthorizeFilter]
     public async Task<Response> Update(T entity)
     {
+        var response = new DataOutput<T>();
+        try
+        {
+            var data = await service.GetById(entity.Id);
+            if (data == null)
+            {
+                response.Data = data;
+                response.StatusCode = ResponseStatusCode.Success;
+                return response;
+            }
+        }
+        catch(Exception ex)
+        {
+            response.ErrorMessage = ex.Message;
+            response.StatusCode = ResponseStatusCode.Error;
+            return response;
+        }
+
         return await service.Update(entity);
     }
 
