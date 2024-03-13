@@ -55,7 +55,7 @@ public class BasicAuthorizeFilter : ActionFilterAttribute
         // else
         // {
         //     notAllow = false;
-        //     await next();
+        await next();
         // }
     }
 }
