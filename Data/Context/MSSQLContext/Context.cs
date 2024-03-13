@@ -22,7 +22,7 @@ public class ApplicationDbContext : DbContext
     public virtual DbSet<Attendance> Attendances { get; set; }
     public virtual DbSet<ClassRoom_Student> ClassRoomStudents { get; set; }
     public virtual DbSet<Grade> Grades { get; set; }
-    public virtual DbSet<User> Users { get; set; }
+    public virtual DbSet<Slot> Slots { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder
@@ -41,16 +41,16 @@ public class ApplicationDbContext : DbContext
         modelBuilder.Entity<Classroom>(entity => { entity.ToTable("classroom"); });
         modelBuilder.Entity<Attendance>(entity =>
         {
-            entity.HasNoKey();
+            entity.HasKey(a => new { a.student_id, a.slot_id });
             entity.ToTable("attendance");
         });
         modelBuilder.Entity<ClassRoom_Student>(entity =>
         {
-            entity.HasNoKey();
+            entity.HasKey(a => new { a.student_id, a.classroom_id });
             entity.ToTable("classroom_student");
         });
         modelBuilder.Entity<Grade>(entity => { entity.ToTable("grade"); });
 
-        modelBuilder.Entity<User>(entity => { entity.ToTable("Users");  });
+        modelBuilder.Entity<Slot>(entity => { entity.ToTable("Slots");  });
     }
 }

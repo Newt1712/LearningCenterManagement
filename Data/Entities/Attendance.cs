@@ -2,11 +2,15 @@
 
 namespace Data.Entities;
 
-[Table("attendance")]
+[Table("attendances")]
 public class Attendance
 {
-    public DateTime date { get; set; }
-    public string remark { get; set; }
-    public double status { get; set; }
     public int student_id { get; set; }
+    public Student Student { get; set; }
+
+    public int slot_id { get; set; }
+    public Slot Slot { get; set; }
+
+    public bool is_present { get; set; }
+
 }

@@ -14,6 +14,7 @@ using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using WebAPI.AttributeFilter;
+using WebAPI.ServiceExtensions;
 
 var builder = WebApplication.CreateBuilder(args);
 // config
@@ -61,6 +62,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 // config service context
+builder.Services.AddJwt(builder.Configuration);
 builder.Services.AddMemoryCache();
 builder.Services.AddSingleton<IMemoryService, MemoryManager>();
 

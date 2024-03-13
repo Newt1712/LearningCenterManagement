@@ -2,6 +2,7 @@
 using Data.Models.Common;
 using Data.Models.RequestModel;
 using Data.Models.ResponseModel;
+using Data.Models.Users;
 using Data.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

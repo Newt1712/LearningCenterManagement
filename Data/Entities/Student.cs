@@ -7,7 +7,6 @@ public class Student : BaseEntity
 {
     public string email { get; set; }
     public string password { get; set; }
-    public byte[] salt { get; set; }
     public string fname { get; set; }
     public string iname { get; set; }
     public DateTime dob { get; set; }
@@ -18,4 +17,6 @@ public class Student : BaseEntity
     public string mobile { get; set; }
     public bool status { get; set; }
     public int parent_id { get; set; }
+
+    public virtual IList<Student> Students { get; set; }
 }

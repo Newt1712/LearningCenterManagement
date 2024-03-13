@@ -19,13 +19,11 @@ namespace Data.Service
         private readonly DbSet<Student> _students;
         private readonly DbSet<Parent> _parents;
         private readonly DbSet<Teacher> _teachers;
-        private readonly DbSet<User> _users;
         public AuthenticationService(ApplicationDbContext dbContext) {
             this.dbContext = dbContext;
             _students = dbContext.Students;
             _parents = dbContext.Parents;
             _teachers = dbContext.Teachers;
-            _users = dbContext.Users;
         }
 
   
