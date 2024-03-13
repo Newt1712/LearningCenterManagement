@@ -14,7 +14,7 @@ namespace WebAPI.Controllers
         [HttpPost]
         public async Task<Response> Login([FromBody] LoginModel model)
         {
-            var response = new DataOutput<T>();
+            var response = new DataOutput<dynamic>();
             return response;
         }
 

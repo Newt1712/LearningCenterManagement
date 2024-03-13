@@ -4,9 +4,9 @@ using System.Text;
 
 namespace WebAPI.ServiceExtensions
 {
-    public static class ServiceConfig
+    public static class ServiceExtensions
     {
-        public static void ConfigureServices(this IServiceCollection services, IConfiguration configuration)
+        public static void AddJwt(this IServiceCollection services, IConfiguration configuration)
         {
 
             var jwtIssuer = configuration.GetSection("Jwt:Issuer").Get<string>();
