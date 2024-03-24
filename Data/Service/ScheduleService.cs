@@ -3,11 +3,11 @@ using Data.Entities;
 
 namespace Data.Service;
 
-public class GradeService : BaseEntityService<Grade>
+public class ScheduleService : BaseEntityService<Schedules>
 {
     private readonly ApplicationDbContext dbContext;
 
-    public GradeService(ApplicationDbContext dbContext) : base(dbContext)
+    public ScheduleService(ApplicationDbContext dbContext) : base(dbContext)
     {
         this.dbContext = dbContext;
     }

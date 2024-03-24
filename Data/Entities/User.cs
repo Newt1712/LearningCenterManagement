@@ -1,19 +1,15 @@
-﻿using Data.Models.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Data.Entities
+namespace Data.Entities;
+
+[Table("users")]
+public class Users : BaseEntity
 {
-    public class User
-    {
-        public int Id { get; set; }
-        public int UserId{ get; set; }
-        public string Username { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }    
-        public string Salt { get; set; }
-    }
+    public int user_id { get; set; }
+    public string user_name { get; set; }
+    public string salt { get; set; }
+    public string password { get; set; }
+    public string Salt { get; set; }
+    public int type { get; set; }
+    public bool is_active { get; set; }
 }

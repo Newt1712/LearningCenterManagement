@@ -72,18 +72,18 @@ builder.Services.AddSingleton<IRedisStackExchangeAPI, RedisStackExchangeAPI>();
 builder.Services.Configure<RedisSettings>(builder.Configuration.GetSection(nameof(RedisSettings)));
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(AppSettings.MSSQLSettings.SQLConn));
 
-builder.Services.AddScoped<BaseEntityService<Parent>>();
+builder.Services.AddScoped<BaseEntityService<Parents>>();
 builder.Services.AddScoped<ParentService>();
-builder.Services.AddScoped<BaseEntityService<Course>>();
-builder.Services.AddScoped<CourseService>();
-builder.Services.AddScoped<BaseEntityService<Classroom>>();
+builder.Services.AddScoped<BaseEntityService<Classrooms>>();
 builder.Services.AddScoped<ClassroomService>();
-builder.Services.AddScoped<BaseEntityService<Student>>();
+builder.Services.AddScoped<BaseEntityService<Subjects>>();
+builder.Services.AddScoped<SubjectService>();
+builder.Services.AddScoped<BaseEntityService<Students>>();
 builder.Services.AddScoped<StudentService>();
-builder.Services.AddScoped<BaseEntityService<Teacher>>();
-builder.Services.AddScoped<TeacherService>();
-builder.Services.AddScoped<BaseEntityService<Grade>>();
-builder.Services.AddScoped<GradeService>();
+builder.Services.AddScoped<BaseEntityService<Users>>();
+builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<BaseEntityService<Schedules>>();
+builder.Services.AddScoped<ScheduleService>();
 
 AppSettings.Init(builder.Services, builder.Configuration);
 
@@ -119,18 +119,6 @@ builder.Services.AddSignalR(o =>
     options.PayloadSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
 });
 
-
-// setup sentry and app
-//using (SentrySdk.Init(o =>
-//{
-//    string dsn = config.GetValue<string>("Sentry:Dsn");
-//    string release = config.GetValue<string>("Sentry:Release");
-//    string enviroment = config.GetValue<string>("Sentry:Environment");
-
-//    o.Dsn = dsn;
-//    o.Release = release;
-//    o.Environment = enviroment;
-//}))
 {
     var app = builder.Build();
     app.UseCors("AllowAllOrigins");

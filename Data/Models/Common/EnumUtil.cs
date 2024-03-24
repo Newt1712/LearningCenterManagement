@@ -7,14 +7,12 @@ public enum EnumMessage
     [Description("Oops! Somethings wrong. Please check it again")]
     ERROR = -1,
 
-    [Description("Not found data")]
-    NOT_FOUND = -5,
+    [Description("Not found data")] NOT_FOUND = -5,
 
     [Description("Sign-in information is invalid")]
     LOGIN_ERROR = -6,
 
-    [Description("Not found data")] 
-    NOT_EXISTED = -8
+    [Description("Not found data")] NOT_EXISTED = -8
 }
 
 public enum ResponseStatusCode

@@ -1,13 +1,17 @@
-﻿using Data.Models.ResponseModel;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Data.Entities;
+using Data.Service;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebAPI.Controllers
+namespace WebAPI.Controllers;
+
+[Route("api/[controller]/[action]")]
+[ApiController]
+public class ScheduleController : BaseController<Schedules>
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ScheduleController : ControllerBase
+    private readonly ScheduleService service;
+
+    public ScheduleController(ScheduleService service) : base(service)
     {
+        this.service = service;
     }
 }

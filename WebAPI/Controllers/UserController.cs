@@ -6,11 +6,11 @@ namespace WebAPI.Controllers;
 
 [ApiController]
 [Route("api/[controller]/[action]")]
-public class CourseController : BaseController<Course>
+public class UserController : BaseController<Users>
 {
-    private readonly CourseService service;
+    private readonly UserService service;
 
-    public CourseController(CourseService service) : base(service)
+    public UserController(UserService service) : base(service)
     {
         this.service = service;
     }

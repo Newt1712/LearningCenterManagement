@@ -3,7 +3,7 @@ using Data.Entities;
 
 namespace Data.Service;
 
-public class ParentService : BaseEntityService<Parent>
+public class ParentService : BaseEntityService<Parents>
 {
     private readonly ApplicationDbContext dbContext;
 
