@@ -8,12 +8,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Remove="Enums\**" />
-        <EmbeddedResource Remove="Enums\**" />
-        <None Remove="Enums\**" />
-    </ItemGroup>
-
-    <ItemGroup>
         <PackageReference Include="Aftership" Version="6.0.4" />
         <PackageReference Include="Dapper" Version="2.0.123" />
         <PackageReference Include="EAGetMail" Version="5.3.0.2" />
