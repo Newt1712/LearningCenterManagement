@@ -10,7 +10,7 @@ namespace Data.Enums
     {
         Math = 0,
         Literature = 1,
-        Englisht = 2,
+        English = 2,
     }
 
     public enum Level

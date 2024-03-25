@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Data.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Data.Entities;
 
@@ -10,7 +11,7 @@ public class Teachers : BaseEntity
     public string fullname { get; set; }
     public string username { get; set; }
     public string phone { get; set; }
-    public int subjectType { get; set; }
+    public SubjectType subjectType { get; set; }
     public bool status { get; set; }
     public bool is_admin { get; set; }
 }
