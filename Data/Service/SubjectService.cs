@@ -3,11 +3,11 @@ using Data.Entities;
 
 namespace Data.Service;
 
-public class TeacherService : BaseEntityService<Teachers>
+public class SubjectService : BaseEntityService<Subjects>
 {
     private readonly ApplicationDbContext dbContext;
 
-    public TeacherService(ApplicationDbContext dbContext) : base(dbContext)
+    public SubjectService(ApplicationDbContext dbContext) : base(dbContext)
     {
         this.dbContext = dbContext;
     }

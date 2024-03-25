@@ -6,7 +6,7 @@ namespace WebAPI.Controllers;
 
 [ApiController]
 [Route("api/[controller]/[action]")]
-public class ClassroomController : BaseController<Classroom>
+public class ClassroomController : BaseController<Classrooms>
 {
     private readonly ClassroomService service;
 

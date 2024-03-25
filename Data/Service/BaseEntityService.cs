@@ -13,6 +13,7 @@ public class BaseEntityService<TEntity> where TEntity : BaseEntity
 {
     public readonly ApplicationDbContext _context;
     private readonly DbSet<TEntity> _entities;
+
     public BaseEntityService(ApplicationDbContext context)
     {
         _context = context;
@@ -119,12 +120,13 @@ public class BaseEntityService<TEntity> where TEntity : BaseEntity
         var response = new Response();
         try
         {
-            if (!(await _entities.AnyAsync(x => x.Id == entity.Id)))
+            if (!await _entities.AnyAsync(x => x.Id == entity.Id))
             {
                 response.StatusCode = ResponseStatusCode.Error;
                 response.ErrorMessage = EnumMessage.NOT_EXISTED.GetDescription();
                 return response;
             }
+
             _context.Update(entity);
             var affected = await _context.SaveChangesAsync();
             response.StatusCode = affected > 0 ? ResponseStatusCode.Success : ResponseStatusCode.Error;
@@ -144,15 +146,14 @@ public class BaseEntityService<TEntity> where TEntity : BaseEntity
         var response = new Response();
         try
         {
-
             var entity = await GetById(id);
             if (entity == null)
             {
                 response.StatusCode = ResponseStatusCode.Error;
                 response.ErrorMessage = EnumMessage.NOT_EXISTED.GetDescription();
                 return response;
-
             }
+
             //_context.Remove<TEntity>(entity);
             _context.Remove(entity);
             var affected = await _context.SaveChangesAsync();
@@ -206,5 +207,4 @@ public class BaseEntityService<TEntity> where TEntity : BaseEntity
 
         return response;
     }
-
 }
