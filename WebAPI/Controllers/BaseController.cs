@@ -24,8 +24,6 @@ public class BaseController<T> : ControllerBase where T : BaseEntity
     [AllowAnonymous]
     public async Task<ListDataOutput<T>> GetList(Pager pager)
     {
-        var isAdmin = HttpContext.Request.Headers["Admin"] == "true";
-        if (isAdmin) pager.IsAdmin = true;
         return await service.GetList(pager);
     }
 

@@ -84,6 +84,8 @@ builder.Services.AddScoped<BaseEntityService<Users>>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<BaseEntityService<Schedules>>();
 builder.Services.AddScoped<ScheduleService>();
+builder.Services.AddScoped<BaseEntityService<Teachers>>();
+builder.Services.AddScoped<TeacherService>();
 
 AppSettings.Init(builder.Services, builder.Configuration);
 

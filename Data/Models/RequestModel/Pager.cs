@@ -9,7 +9,6 @@ public class Pager
     [DefaultValue("Id")] public string? SortBy { get; set; } = "Id";
     [DefaultValue("desc")] public string? OrderBy { get; set; } = "desc";
     public string? Keyword { get; set; } = "";
-    public bool? IsAdmin { get; set; } = false;
 }
 
 public class CategoryFilter : Pager

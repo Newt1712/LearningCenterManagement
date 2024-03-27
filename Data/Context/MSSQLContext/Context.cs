@@ -36,14 +36,26 @@ public class ApplicationDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Attendances>(entity => { entity.ToTable("attendances"); });
+        modelBuilder.Entity<Attendances>(entity =>
+        {
+            entity.ToTable("attendances");
+            entity.HasNoKey();
+        });
         modelBuilder.Entity<Classrooms>(entity => { entity.ToTable("classrooms"); });
         modelBuilder.Entity<Parents>(entity => { entity.ToTable("parents"); });
         modelBuilder.Entity<Schedules>(entity => { entity.ToTable("schedules"); });
-        modelBuilder.Entity<Teachers>(entity => { entity.ToTable("teachers"); });
+        modelBuilder.Entity<Teachers>(entity => { entity.ToTable("teacher"); });
         modelBuilder.Entity<Students>(entity => { entity.ToTable("students"); });
-        modelBuilder.Entity<Students_Subject>(entity => { entity.ToTable("students_subject"); });
-        modelBuilder.Entity<Students_Classrooms>(entity => { entity.ToTable("students_classrooms"); });
+        modelBuilder.Entity<Students_Subject>(entity =>
+        {
+            entity.ToTable("students_subject"); 
+            entity.HasNoKey();
+        });
+        modelBuilder.Entity<Students_Classrooms>(entity =>
+        {
+            entity.ToTable("students_classrooms");
+            entity.HasNoKey();
+        });
         modelBuilder.Entity<Users>(entity => { entity.ToTable("users"); });
         modelBuilder.Entity<Subjects>(entity => { entity.ToTable("subjects"); });
     }
